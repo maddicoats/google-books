@@ -1,0 +1,41 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+}
+
+ul {
+    list-style: none;
+
+}
+
+.bookcard {
+    text-align: center;
+    margin: 20px;
+    background-color: transparent;
+    padding: 10px;
+
+    &--title {
+        font-weight: bold;
+        font-size: 20px;
+        margin-top: 10px;
+    }
+
+    &--author {
+        color: black;
+    }
+
+    &--button {
+        color: black;
+        margin: 15px;
+    }
+}
+
+#output {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
