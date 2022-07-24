@@ -18,8 +18,8 @@ async function getBooks(event) {
     const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${input}`);
 
     const data = await response.json();
-    
     console.log(data)
+
     let output = '';
     data.items.forEach(book => {
         console.log(book.volumeInfo.imageLinks)
@@ -34,7 +34,7 @@ async function getBooks(event) {
                         // book.volumeInfo.imageLinks.thumbnail ? book.volumeInfo.imageLinks.thumbnail : "./not-found.png"
                     }>
                     
-                    <div><a href=${book.volumeInfo.canonicalVolumeLink} target="_blank"><button class="bookcard--button">more info</button></a></div>
+                    <div><a href=${book.volumeInfo.canonicalVolumeLink} target="_blank"><button class="bookcard--button">more info  <i class="fa-solid fa-arrow-up-right-from-square bookcard--button--icon"></i></button></a></div>
                 </div>
 
                 <div>
@@ -53,14 +53,10 @@ async function getBooks(event) {
                 </div>
             </div>
         `;
-
     });
 
     // display the results:
     document.querySelector("#output").innerHTML = output;
-
-    
-
 }
 
 
