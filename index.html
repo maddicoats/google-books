@@ -4,30 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Google Books</title>
+    <title>Book Finder.</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/c72f3c627b.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Belleza&family=Bungee+Hairline&family=Chakra+Petch:wght@300&family=Geostar+Fill&family=Libre+Barcode+39&family=Montserrat&family=Orbitron&family=Poppins:wght@300&family=Skranji:wght@700&family=Special+Elite&family=VT323&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>take a look! find a book!</h1>
-    </header>
+    <header class="height">
+        <h1>Book Finder .</h1>
 
-    <div class="search">
-        <input 
-            type="text"     
-            class="search--input" 
-            id="search-input"
-            placeholder="what are you looking for?"
-        />
-        <input 
-            type="submit" 
-            id="search-button"
-            class="search--button"
-            name="search-button"
-            value="search"
-        />
-    </div>
-    
+        <div class="search">
+            <input 
+                type="text"     
+                class="search--input" 
+                id="search-input"
+                placeholder="what are you looking for?"
+            />
+            <button 
+                type="submit" 
+                id="search-button"
+                class="search--button"
+                name="search-button"
+                value="submit"
+            ><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+    </header>
 
     <main>
         <div id="output">
