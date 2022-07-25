@@ -4,20 +4,15 @@
 }
 
 html {
-    background-image: url(./bg2.png);
+    background-image: url(assests/bg10.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(37, 37, 37);
 }
 
-h1 {
-    margin-top: 20px;
-    font-family: 'Special Elite', cursive;
-    font-size: 60px;
-    margin-bottom: 10px;
-    color: rgb(36, 36, 36);
-    text-shadow: 3px 3px #ffffff;
+.height {
+    height: 90vh;
 }
 
 header {
@@ -28,46 +23,52 @@ header {
     align-items: center;
     flex-direction: column;
     margin-bottom: 20px;
-}
 
-.height {
-    height: 90vh;
-}
-
-.search {
-    display: flex;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-    width: fit-content;
-    border-radius: 25px;
-
-    &--input {
-        border: none;
-        width: 240px;
-        border-top-left-radius: 25px;
-        border-bottom-left-radius: 25px;
-        padding: 15px;
-        padding-left: 20px;
-        background-color: white;
-
-        &:focus {
-            outline: none;
-        }
-
-        &:hover~.search--button {
-            color: #97c693;
-        }
+    & h1 {
+        margin-top: 20px;
+        font-family: 'Special Elite', cursive;
+        font-size: 60px;
+        margin-bottom: 20px;
+        color: #1c0f0b;
+        text-shadow: 3px 3px #fffaf4, -3px -3px #f8c294, 0px 5px #f8c294, 5px 0px #fffaf4;
     }
 
-    &--button {
-        width: 40px;
-        background-color: white;
-        border: none;
-        border-top-right-radius: 25px;
-        border-bottom-right-radius: 25px;
+    .search {
+        display: flex;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+        width: fit-content;
+        border-radius: 25px;
 
-        &:hover {
-            cursor: pointer;
-            color: #97c693;
+        &--input {
+            border: none;
+            width: 240px;
+            border-top-left-radius: 25px;
+            border-bottom-left-radius: 25px;
+            padding: 15px;
+            padding-left: 20px;
+            background-color: #fffaf4;
+            font-size: 15px;
+
+            &:focus {
+                outline: none;
+            }
+
+            &:hover~.search--button {
+                color: #97c693;
+            }
+        }
+
+        &--button {
+            width: 40px;
+            background-color: #fffaf4;
+            border: none;
+            border-top-right-radius: 25px;
+            border-bottom-right-radius: 25px;
+
+            &:hover {
+                cursor: pointer;
+                color: #97c693;
+            }
         }
     }
 }
@@ -77,16 +78,15 @@ header {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-
 }
 
 .bookcard {
     margin: 20px;
     padding: 30px;
-    background-color: rgb(255, 255, 255);
+    background-color: #fffaf4;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
     width: 80%;
-    border-radius: 0px;
+    border-radius: 5px;
     display: flex;
 
     &--img {
@@ -111,26 +111,25 @@ header {
     &--description {
         color: black;
         max-height: 216px;
-        overflow: hidden;
+        overflow: scroll;
         margin-bottom: 0px;
         text-align: justify;
         text-justify: inter-word;
-
+        padding-right: 10px;
+        overflow-x: hidden;
     }
 
     &--button {
         margin-top: 10px;
         width: 148px;
-
-        background-color: #ffffff;
-        border: 1px solid #000000;
+        background-color: #f4ebe0;
+        border: 1px solid #1c0f0b;
         border-radius: 5px;
-        box-shadow: #000000 1px 2px 0 0;
-        color: #000000;
+        box-shadow: #1c0f0b 1px 2px 0 0;
+        color: #1c0f0b;
         cursor: pointer;
         display: inline-block;
         font-weight: 600;
-
         padding: 0 18px;
         line-height: 30px;
         text-align: center;
@@ -139,11 +138,8 @@ header {
         -webkit-user-select: none;
         touch-action: manipulation;
 
-
-
         &:hover {
             cursor: pointer;
-            background-color: rgb(248, 248, 248);
         }
 
         &--icon {
@@ -155,7 +151,60 @@ header {
         }
 
         &:active {
-            transform: translate(2px, 2px);
+            transform: translate(1px, 2px);
+        }
+    }
+
+    &--error {
+        text-align: center;
+        font-size: 15px;
+        padding: 10px;
+        width: 100%;
+        overflow: hidden;
+        font-style: italic;
+        letter-spacing: 0.5px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .bookcard {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        &--button {
+            margin-bottom: 15px;
+        }
+
+        &--img {
+            margin-right: 0px;
+        }
+    }
+}
+
+@media only screen and (min-width: 501px) and (max-width: 600px) {
+    .bookcard {
+        &--description {
+            text-align: left;
+        }
+    }
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+
+    &-track {
+        background: #fffaf4;
+    }
+
+    &-thumb {
+        background: #1c0f0b;
+        border-radius: 1px;
+
+        &:hover {
+            background: #dccdbb;
         }
     }
 }

@@ -21,39 +21,53 @@ async function getBooks(event) {
     console.log(data)
 
     let output = '';
-    data.items.forEach(book => {
+    try {
+        data.items.forEach(book => {
         console.log(book.volumeInfo.imageLinks)
         output += `
             <div class="bookcard">
                 <div>
                     <img class="bookcard--img" src=${
                         book.volumeInfo.imageLinks === undefined || null 
-                            ? "./not-found.png" 
+                            ? "assets/not-found.png" 
                             : `${book.volumeInfo.imageLinks.thumbnail}`
-                        
-                        // book.volumeInfo.imageLinks.thumbnail ? book.volumeInfo.imageLinks.thumbnail : "./not-found.png"
                     }>
                     
-                    <div><a href=${book.volumeInfo.canonicalVolumeLink} target="_blank"><button class="bookcard--button">more info  <i class="fa-solid fa-arrow-up-right-from-square bookcard--button--icon"></i></button></a></div>
-                </div>
+                    <div>
+                        <a href=${book.volumeInfo.canonicalVolumeLink} target="_blank">
+                        <button class="bookcard--button">more info  <i class="fa-solid fa-arrow-up-right-from-square bookcard--button--icon"></i></button></a></div>
+                    </div>
 
                 <div>
-                    <h3 class="bookcard--title">${book.volumeInfo.title}</h3>
+                    <h3 class="bookcard--title">${
+                        book.volumeInfo.title 
+                            ? book.volumeInfo.title 
+                            : "<i>title unavailable</i>"
+                        }</h3>
 
                     <h4 class="bookcard--author">${
-                        book.volumeInfo.authors ? "by " + book.volumeInfo.authors.join(', ') : "<i>author unavailable</i>"
+                        book.volumeInfo.authors 
+                            ? "by " + book.volumeInfo.authors.join(', ') 
+                            : "<i>author unavailable</i>"
                     }</h4>
 
                     <p class="bookcard--description">${
-                        book.volumeInfo.description ? book.volumeInfo.description : "<i>description unavailable</i>"
-
-                        //, book.volumeInfo.description.length>430 ? book.volumeInfo.description = book.volumeInfo.description.substr(0,430)+"..." : book.volumeInfo.description
-                        
+                        book.volumeInfo.description 
+                            ? book.volumeInfo.description 
+                            : "<i>description unavailable</i>"
                     }</p>
                 </div>
             </div>
         `;
     });
+    } catch {
+        output += `
+            <div class="bookcard">
+                <p class="bookcard--error">No results available for "${input}"  <i class="fa-solid fa-heart-crack"></i> (try entering a real word)</p>
+            </div>
+        `
+    }
+    
 
     // display the results:
     document.querySelector("#output").innerHTML = output;

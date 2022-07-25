@@ -30,4 +30,4 @@ Application Design (required):
 -   Always parameterize and abstract large pieces of duplicate code.
 
 
--   [Google Books API no Auth link](https://developers.google.com/books/docs/v1/using#WorkingVolumes)
+[Google Books API no Auth link](https://developers.google.com/books/docs/v1/using#WorkingVolumes)
