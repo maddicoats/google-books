@@ -29,7 +29,7 @@ async function getBooks(event) {
                 <div>
                     <img class="bookcard--img" src=${
                         book.volumeInfo.imageLinks === undefined || null 
-                            ? "assets/not-found.png" 
+                            ? "./placeholder.png" 
                             : `${book.volumeInfo.imageLinks.thumbnail}`
                     }>
                     
@@ -63,7 +63,10 @@ async function getBooks(event) {
     } catch {
         output += `
             <div class="bookcard">
-                <p class="bookcard--error">No results available for "${input}"  <i class="fa-solid fa-heart-crack"></i> (try entering a real word)</p>
+                <p class="bookcard--error">
+                    No results available for "${input}" 
+                    <i class="fa-solid fa-heart-crack"></i>
+                </p>
             </div>
         `
     }
