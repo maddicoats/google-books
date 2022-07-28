@@ -1,29 +1,25 @@
-document.querySelector('#search-button').addEventListener("click", event => {
+document.querySelector('.search').addEventListener("submit", (event) => {
+    event.preventDefault();
     return (
-        console.log(document.querySelector('#search-input').value),
         getBooks(),
         document.querySelector("header").classList.remove("height")
         )
 })
 
-document.querySelector("#search-input").addEventListener("keyup", function(event) {
-    if (event.key === "Enter") {
-        document.querySelector("#search-button").click();
-    }
-});
+const fetchBooks = async (input) => {
+   const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${input}`);
 
-async function getBooks(event) {
+   return await response.json()
+};
+
+async function getBooks() {
     const input = document.querySelector('#search-input').value;
 
-    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${input}`);
-
-    const data = await response.json();
-    console.log(data)
+    const data = await fetchBooks(input);
 
     let output = '';
     try {
         data.items.forEach(book => {
-        console.log(book.volumeInfo.imageLinks)
         output += `
             <div class="bookcard">
                 <div>
@@ -71,8 +67,6 @@ async function getBooks(event) {
         `
     }
     
-
-    // display the results:
     document.querySelector("#output").innerHTML = output;
 }
 
